@@ -19,7 +19,7 @@ namespace CapaModelo_Seguridad.Repositorios
 
         public ClsRepositorioRoles()
         {
-            _SelectAll = "Select * FROM tblRol";
+            _SelectAll = "SELECT idRol AS CodigoPerfil, nombreRol AS NombrePerfil, descripcionRol AS DescripcionPerfil, is_active AS Estado, created_at AS FechaCreacion, updated_at AS FechaActualizacion FROM tblRol";
             _Insert = "INSERT INTO tblRol (nombreRol, descripcionRol, is_active) values (?, ?, ?)";
             _Update = "UPDATE tblRol SET nombreRol=?, descripcionRol=?, is_active=? WHERE idRol=?";
             _Delete = "DELETE FROM tblRol WHERE idRol=?";
@@ -70,5 +70,15 @@ namespace CapaModelo_Seguridad.Repositorios
             TablaDatos = null;
             return ListaRoles;
         }
+
+        public int SeguridadMetContarAsignaciones(int IdRol)
+        {
+            string sql = "SELECT COUNT(*) FROM tblUsuarioRol WHERE idRol = " + IdRol;
+            var Tabla = SeguridadMetEjecucionConsulta(sql, CommandType.Text);
+            return Convert.ToInt32(Tabla.Rows[0][0]);
+        }
+
+
+
     }
 }

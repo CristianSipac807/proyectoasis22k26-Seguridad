@@ -10,6 +10,7 @@ namespace CapaModelo_Seguridad.Contratos
 {
     public interface IRepositorioRoles : IRepositorioGenerico<ClsRoles>
     {
+        int SeguridadMetContarAsignaciones(int IdRol);
 
     }
 }
