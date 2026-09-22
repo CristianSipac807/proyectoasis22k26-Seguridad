@@ -1,4 +1,5 @@
-﻿using CapaControlador_Seguridad;
+﻿//Cambios
+using CapaControlador_Seguridad;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
